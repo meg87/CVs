@@ -1,0 +1,114 @@
+body
+{
+	padding: 50px;
+	font-family: arial, tahoma;
+}
+
+.contact
+{
+	text-align: center;
+}
+
+.contact h1
+{
+	font-size: x-large;
+}
+
+.contact h2
+{
+	font-size: small;
+	font-weight: normal;
+}
+
+.section
+{
+	margin-bottom: 30px;
+}
+
+.section h2
+{
+	font-size: large;
+	margin-bottom: 10px;
+}
+
+.section h3
+{
+	font-size: medium;
+}
+
+.section h3, .section table
+{
+	margin-left: 20px;
+}
+
+.section p
+{
+	margin-left: 40px;
+}
+
+.section hr
+{
+	height: 1px; 
+	background-color: black; 
+	color: black; 
+	border: 0px none; 
+	margin-top:5px; 
+	margin-bottom: 15px;
+}
+
+.section ul
+{
+	/*list-style:none outside none;*/
+}
+
+.section th, .section td
+{
+	border: 1px black solid;
+	text-align: center;
+	padding: 5px;
+}
+
+@media print
+{
+	body {padding: 0px;}
+	.section, table {page-break-before: auto}
+}
+.section input[type=text], .section select
+{
+	margin-bottom: 10px;
+	display:block;
+}
+.section input[type=text]
+{
+	direction: ltr;
+}
+.section button, .section label
+{
+	display:block;
+	margin-top: 10px;
+}
+.button
+{
+	cursor:pointer;
+	border: 1px #808080 solid;
+	padding: 5px;
+	clear: none;
+	background:#f9f9f9; 
+	-moz-border-radius:10px; 
+	-webkit-border-radius:10px; 
+	-opera-border-radius:10px;
+	font-family: tahoma;
+	font-size: small;
+}
+.button:hover
+{
+	background: #f0f0f0;
+}
+.error 
+{
+	color: red;
+}
+.bar
+{
+	
+}

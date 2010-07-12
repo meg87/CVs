@@ -1,0 +1,454 @@
+<html dir="rtl">
+	<head>
+		<title>طلب المساهمة في المشروع</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#certifications").hide();
+				$("#projects").hide();
+				$("#experiences").hide();
+				$('#add-certification').click(function() {
+					$("#certifications").show();
+					$("#certifications").append("<tr><td><input type='text' name='certification[]'></td><td><input type='text' name='certification-date[]' size='4'></td></tr>");
+
+				});
+				$('#add-project').click(function() {
+					$("#projects").show();
+					$("#projects").append("<tr><td><input type='text' name='project-title[]'></td><td><input type='text' name='project-description[]'></td><td><input type='text' name='project-technologies[]'></td><td><input type='text' name='project-date[]' size='4'></td></tr>");
+
+				});
+				$('#add-experience').click(function() {
+					$("#experiences").show();
+					$("#experiences").append("<tr><td><input type='text' name='job-title[]'></td><td><input type='text' name='job-description[]'></td><td><input type='text' name='job-company[]'></td><td><input type='text' name='job-start[]'></td><td><input type='text' name='job-end[]'></td></tr>");
+
+				});
+				$('#add-skill').click(function() {
+					$("#skills").append("<tr><td colspan='3'><input type='text' name='other-skill[]'></td></tr>");
+
+				});
+				$('#add-course').click(function() {
+					$("#courses").append("<li><input type='text' name='other-course[]'></li>");
+
+				});
+				$('.delete').click(function() {
+					$(this).parent().parent().remove();
+				});
+			});
+		</script>
+		<script type="text/javascript">
+			$(function() 
+			{		
+				$("#frm").validate
+				({
+					rules: 
+					{
+						name: {required: true, minlength: 3},
+						email: {required: true, email: true},
+						major: {required:true, minlength: 2},
+					},
+					messages: 
+					{
+						name: "يجب ادخال اسم لا يقل طوله عن 3 احرف",
+						email: "عنوان البريد الالكتروني غير صالح",
+						major: "التخصص مطلوب"
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form id="frm" name="frm" method="post" action="save.php">
+			<h1>طلب المساهمة في المشروع</h1>
+			<p>للمساهمة معنا يجب عليك اولا تعبئة البيانات الضرورية بالاسفل<br />ولمعرفة المزيد عن المشروع تفضل بزيارة <a href="http://www.imam1.com/vb/showthread.php?t=139897">صفحة التعريف بالمشروع</a></p>
+			<br />
+			<div class="section"><p>
+			<b>ملاحظات قبل البدأ</b>
+			<hr />
+			<ul>
+				<li>يفضل ملئ البيانات بالاسفل باللغة الانجليزية فقط</li>
+				<li>لست مطالب بملئ جميع الحقول ولكن يفضل ذلك قدر الامكان</li>
+				<li>عندما يطلب منك ادخال تاريخ فان ذلك اختياري وهو السنة فقط</li>
+				<li>كل ما ستكتبه ستسأل عنه فاكتب ما تعرف فقط حتى لا توقعنا وتوقع نفسك في حرج</li>
+				<li>اكتب كل ما تشعر بانه يميزك ويكشف عن قدراتك او حماسك مهما كان بسيط</li>
+				<li>حتى ان اضطريت الى تسليم سيرة ذاتية شبه فارغة فلا تفقد الامل</li>
+			</ul>
+			</div>
+			<div class="section"><p>
+				<h2>البيانات الشخصية</h2>
+				<hr />
+				<p>حتى نتمكن من التواصل معك املئ البيانات بالاسفل :</p>
+				<label>الاسم (لا يشترط الاسم الحقيقي)</label>
+				<input type="text" id="name" name="name">
+				<label>البريد الالكتروني</label>
+				<input type="text" id="email" name="email">
+				<label>الموقع (مدونة او حساب في احد الشبكات الاجتماعية)</label>
+				<input type="text" id="website" name="website">	
+			</div>
+			<div class="section">
+				<h2>المؤهلات العلمية</h2>
+				<hr />
+				<p>نشترط هنا ان تكون طالب او طالبة حاسب كحد أدنى</p>
+				<label>الجامعة</label>
+				<input type="text" name="university">
+				<label>التخصص</label>
+				<input type="text" id="major" name="major">
+				<label>المستوى الدراسي (يجب ان تكون قد اجتزته)</label>
+				<select name="semester">
+					<option value="1st preparatory level">التخضيري الاول</option>
+					<option value="2nd preparatory level">التحضيري الثاني</option>
+					<option value="1st level">المستوى الاول</option>
+					<option value="2nd level">المستوى الثاني</option>
+					<option value="3rd level">المستوى الثالث</option>
+					<option value="4th level">المستوى الرابع</option>
+					<option value="5th level">المستوى الخامس</option>
+					<option value="6th level">المستوى السادس</option>
+					<option value="7th level">المستوى السابع</option>
+					<option value="8th level">المستوى الثامن</option>
+					<option value="graduated">خريج</option>
+				</select>
+				<label>سنة الالتحاق بالجامعية</label>
+				<input type="text" name="study-start" size="4">
+				<label>سنة التخرج (اتركها فارغة ان كنت طالب او ضع السنة المتوقعة للتخرج)</label>
+				<input type="text" name="study-end" size="4">	
+			</div>
+			<div class="section">
+				<h2>المهارات التقنية</h2>
+				<hr />
+				<p>قم بوضع علامة صح امام التقنية التي تجيدها ثم حدد مستوى مهارتك فيها :</p>
+				<table id="skills">
+					<tr>
+						<th></th>
+						<th>المهارة</th>
+						<th>المستوى</th>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="HTML"></td>
+						<td>HTML</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="CSS"></td>
+						<td>CSS</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="JavaScript"></td>
+						<td>JavaScript</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="PHP"></td>
+						<td>PHP</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="MySQL"></td>
+						<td>MySQL</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="phpMyAdmin"></td>
+						<td>phpMyAdmin</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="CodeIgniter"></td>
+						<td>CodeIgniter</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="Blueprint"></td>
+						<td>Blueprint</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="jQuery"></td>
+						<td>jQuery</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="XML"></td>
+						<td>XML</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="cPanel"></td>
+						<td>cPanel</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="FTP"></td>
+						<td>FTP</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="UML"></td>
+						<td>UML</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="Linux"></td>
+						<td>Linux</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="Git"></td>
+						<td>Git</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="SVN"></td>
+						<td>SVN</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value=".htaccess"></td>
+						<td>.htaccess</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<br /><b>المهارات قد تكون عبارة عن :</b>
+				<p>لغات برمجة, تقنيات برمجية, نظم تشغيل, برامج ..الخ<br />تفضل بالاطلاع على <a href="http://www.footepartners.com/htscpi_latest.htm">قائمة باكثر المهارات طالباً</a> في سوق العمل</p>
+				<br /><span class="button" id="add-skill">اضافة مهارة</span>
+			</div>
+			<div class="section">
+				<h2>اللغات</h2>
+				<hr />
+				<p>ضع علامة صح امام اللغة التي تجيدها وحدد مستواك فيها :</p>
+				<table>
+					<tr>
+						<th></th>
+						<th>اللغة</th>
+						<th>القراءة</th>
+						<th>الكتابة</th>
+						<th>الاستماع</th>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="language[]" value="Arabic"></td>
+						<td>العربية</td>
+						<td>
+							<select name="reading[]">
+								<option value="0">اللغة الام</option>
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+						<td>
+							<select name="writing[]">
+								<option value="0">اللغة الام</option>
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+						<td>
+							<select name="speaking[]">
+								<option value="0">اللغة الام</option>
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="language[]" value="English"></td>
+						<td>الانجليزية</td>
+						<td>
+							<select name="reading[]">
+								<option value="0">اللغة الام</option>
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+						<td>
+							<select name="writing[]">
+								<option value="0">اللغة الام</option>
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+						<td>
+							<select name="speaking[]">
+								<option value="0">اللغة الام</option>
+								<option value="1">مبتدئ</option>
+								<option value="2">متوسط</option>
+								<option value="3">متقدم</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="section">
+				<h2>المقرارات الدراسية</h2>
+				<hr />
+				<p>من خلال هذا القسم نود معرفة اهم مواد التخصص التي اجتزتها</p>
+
+				<ul id="courses">
+					<li><input type="checkbox" name="course[]" value="Computer Programming"> برمجة الحاسبات</li>
+					<li><input type="checkbox" name="course[]" value="Database"> قواعد البيانات</li>
+					<li><input type="checkbox" name="course[]" value="Computer Network"> شبكات الحاسب</li>
+					<li><input type="checkbox" name="course[]" value="Internet Application"> تطبيقات الانترنت</li>
+					<li><input type="checkbox" name="course[]" value="Software Engneering"> هندسة البرمجيات</li>
+					<li><input type="checkbox" name="course[]" value="Network Security"> امن الشبكات</li>
+				</ul>	
+				<br /><span class="button" id="add-course">اضافة مقرر</span>		
+			</div>
+			<div class="section">
+				<h2>المشاريع السابقة</h2>
+				<hr />
+				<p>ان عملت على مشاريع سابقة مهما كانت بسيطة فاذكرها بما في ذلك مشاريع المواد نهاية كل فصل دراسي</p>
+
+				<table id="projects">
+					<tr>
+						<th>اسم المشروع</th>
+						<th>وصف مختصر للمشروع</th>
+						<th>التقنيات المستخدمة</th>
+						<th>تاريخه</th>
+					</tr>
+				
+				</table>	
+				<br /><span class="button" id="add-project">اضافة مشروع</span>
+			</div>
+			<div class="section">
+				<h2>شهادات الاحتراف</h2>
+				<hr />
+				<p>لا تقلق فلا نشترط حصولك على اي شهادات احتراف ولكن ان حصلت على واحدة فاذكرها</p>
+
+				<table id="certifications">
+					<tr>
+						<th>اسم الشهادة</th>
+						<th>تاريخها</th>
+					</tr>
+				</table>
+				<br /><span class="button" id="add-certification">اضافة شهادة</span>
+			</div>
+			<div class="section">
+				<h2>الخبرات العملية</h2>
+				<hr />
+				<p>هل سبق وان عملت في مكان ما ؟</p>
+				<table id="experiences">
+					<tr>
+						<th>المسمى الوظيفي</th>
+						<th>طبيعة العمل</th>
+						<th>جهة العمل</th>
+						<th>تاريخ البدء</th>
+						<th>تاريخ الانتهاء</th>
+					</tr>
+				</table>	
+				<br /><span class="button" id="add-experience">اضافة خبرة</span>
+			</div>
+			<div class="section">
+			<hr />
+			<input type="submit" value="إرسال الطلب">
+			</div>
+		</form>
+	</body>
+</html>
