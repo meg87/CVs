@@ -146,7 +146,7 @@
 				<?php while($row = mysql_fetch_array($result)): ?>
 					<h3><?=$row['job_start']?> – <?php if($row['job_end']): ?><?=$row['job_end']?><?php else: ?>Persent<?php endif ?></h3>
 					<p>
-						<?=$row['job_description']?>, <?=$row['job_company']?>
+						<?=$row['job_title']?>, <?=$row['job_company']?>
 						<br /><?=$row['job_description']?>
 					<p>
 				<?php endwhile ?>
