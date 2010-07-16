@@ -1,0 +1,470 @@
+<html>
+	<head>
+		<title>Company Name</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/jquery.validate.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#certifications").hide();
+				$("#projects").hide();
+				$("#experiences").hide();
+				$('#add-certification').click(function() {
+					$("#certifications").show();
+					$("#certifications").append("<tr><td><input type='text' name='certification[]'></td><td><input type='text' name='certification-date[]' size='4'></td></tr>");
+
+				});
+				$('#add-project').click(function() {
+					$("#projects").show();
+					$("#projects").append("<tr><td><input type='text' name='project-title[]'></td><td><input type='text' name='project-description[]'></td><td><input type='text' name='project-technologies[]'></td><td><input type='text' name='project-date[]' size='4'></td></tr>");
+
+				});
+				$('#add-experience').click(function() {
+					$("#experiences").show();
+					$("#experiences").append("<tr><td><input type='text' name='job-title[]'></td><td><input type='text' name='job-description[]'></td><td><input type='text' name='job-company[]'></td><td><input type='text' name='job-start[]'></td><td><input type='text' name='job-end[]'></td></tr>");
+
+				});
+				$('#add-skill').click(function() {
+					$("#skills").append("<tr><td colspan='3'><input type='text' name='other-skill[]'></td></tr>");
+
+				});
+				$('#add-course').click(function() {
+					$("#courses").append("<li><input type='text' name='other-course[]'></li>");
+
+				});
+				$('.delete').click(function() {
+					$(this).parent().parent().remove();
+				});
+			});
+		</script>
+		<script type="text/javascript">
+			$(function() 
+			{		
+				$("#frm").validate
+				({
+					rules: 
+					{
+						name: {required: true, minlength: 3},
+						email: {required: true, email: true},
+						major: {required:true, minlength: 2},
+					},
+					messages: 
+					{
+						name: "Sorry, name must be 3 charachters at less !",
+						email: "Sorry, Email is invalid !",
+						major: "Sorry, major field is equired !"
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form id="frm" name="frm" method="post" action="save.php">
+			<h1>Company Name</h1>
+			<p><!-- some information--></p>
+			<div class="section">
+				<h2>Notes</h2>
+				<hr />
+				<ul>
+					<li>If you asked a date, enter just year number</li>
+				</ul>
+			</div>
+			<div class="section"><p>
+				<h2>Personal Information</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<label>Name</label>
+				<input type="text" id="name" name="name">
+				<label>Email</label>
+				<input type="text" id="email" name="email">
+				<label>Website</label>
+				<input type="text" id="website" name="website">	
+			</div>
+			<div class="section">
+				<h2>Education</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<label>University</label>
+				<input type="text" name="university">
+				<label>Major</label>
+				<input type="text" id="major" name="major">
+				<label>Level</label>
+				<select name="semester">
+					<option value="1st preparatory level">1st preparatory level</option>
+					<option value="2nd preparatory level">2nd preparatory level</option>
+					<option value="1st level">1st level</option>
+					<option value="2nd level">2nd level</option>
+					<option value="3rd level">3rd level</option>
+					<option value="4th level">4th level</option>
+					<option value="5th level">5th level</option>
+					<option value="6th level">6th level</option>
+					<option value="7th level">7th level</option>
+					<option value="8th level">8th level</option>
+					<option value="graduated">Graduated</option>
+				</select>
+				<label>Start (year)</label>
+				<input type="text" name="study-start" size="4">
+				<label>End (year)</label>
+				<input type="text" name="study-end" size="4">	
+			</div>
+			<div class="section">
+				<h2>Technecal Skills</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<table id="skills">
+					<tr>
+						<th></th>
+						<th>Skill</th>
+						<th>Level</th>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="HTML"></td>
+						<td>HTML</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="CSS"></td>
+						<td>CSS</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="JavaScript"></td>
+						<td>JavaScript</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="PHP"></td>
+						<td>PHP</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="MySQL"></td>
+						<td>MySQL</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="phpMyAdmin"></td>
+						<td>phpMyAdmin</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="CodeIgniter"></td>
+						<td>CodeIgniter</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="Blueprint"></td>
+						<td>Blueprint</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="jQuery"></td>
+						<td>jQuery</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="XML"></td>
+						<td>XML</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="cPanel"></td>
+						<td>cPanel</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="FTP"></td>
+						<td>FTP</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="UML"></td>
+						<td>UML</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="Linux"></td>
+						<td>Linux</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="Git"></td>
+						<td>Git</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value="SVN"></td>
+						<td>SVN</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="skill[]" value=".htaccess"></td>
+						<td>.htaccess</td>
+						<td>
+							<select name="skill-level[]">
+								<option value="0"></option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<br /><b>The skills are:</b>
+				<p>
+				Programming languages, technologies, platforms, software ..etc
+				<br />Please, take a look on <a href="http://www.footepartners.com/htscpi_latest.htm">list of top IT skills</a>.</p>
+				<br /><span class="button" id="add-skill">Add new skill</span>
+			</div>
+			<div class="section">
+				<h2>Languages</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<table>
+					<tr>
+						<th></th>
+						<th>Language</th>
+						<th>Reading</th>
+						<th>Writing</th>
+						<th>Speaking</th>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="language[]" value="Arabic"></td>
+						<td>Arabic</td>
+						<td>
+							<select name="reading[]">
+								<option value=""></option>
+								<option value="0">Native Language</option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+						<td>
+							<select name="writing[]">
+								<option value=""></option>
+								<option value="0">Native Language</option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+						<td>
+							<select name="speaking[]">
+								<option value=""></option>
+								<option value="0">Native Language</option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="language[]" value="English"></td>
+						<td>English</td>
+						<td>
+							<select name="reading[]">
+								<option value=""></option>
+								<option value="0">Native Language</option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+						<td>
+							<select name="writing[]">
+								<option value=""></option>
+								<option value="0">Native Language</option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+						<td>
+							<select name="speaking[]">
+								<option value=""></option>
+								<option value="0">Native Language</option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="section">
+				<h2>Courses</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<ul id="courses">
+					<li><input type="checkbox" name="course[]" value="Computer Programming">Computer Programming</li>
+					<li><input type="checkbox" name="course[]" value="Database">Database</li>
+					<li><input type="checkbox" name="course[]" value="Computer Network">Computer Network</li>
+					<li><input type="checkbox" name="course[]" value="Internet Application">Internet Application</li>
+					<li><input type="checkbox" name="course[]" value="Software Engneering">Software Engneering</li>
+					<li><input type="checkbox" name="course[]" value="Network Security">Network Security</li>
+				</ul>	
+				<br /><span class="button" id="add-course">Add new course</span>		
+			</div>
+			<div class="section">
+				<h2>Projects</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<table id="projects">
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Technologies</th>
+						<th>Date</th>
+					</tr>
+				
+				</table>	
+				<br /><span class="button" id="add-project">Add project</span>
+			</div>
+			<div class="section">
+				<h2>Certifications</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<table id="certifications">
+					<tr>
+						<th>Certification</th>
+						<th>Date</th>
+					</tr>
+				</table>
+				<br /><span class="button" id="add-certification">Add certification</span>
+			</div>
+			<div class="section">
+				<h2>Experience</h2>
+				<hr />
+				<p><!-- some information about the section --></p>
+				<table id="experiences">
+					<tr>
+						<th>Job Title</th>
+						<th>Job Description</th>
+						<th>Company</th>
+						<th>Start Date</th>
+						<th>End Date</th>
+					</tr>
+				</table>	
+				<br /><span class="button" id="add-experience">Add experience</span>
+			</div>
+			<div class="section">
+			<hr />
+			<input type="submit" value="Send">
+			</div>
+		</form>
+	</body>
+</html>
