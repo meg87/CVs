@@ -33,20 +33,23 @@
 					$result = mysql_query("select * from persons");
 				?>
 				<h1>Curriculum Vitae</h1>
-				<?php if(mysql_num_rows($result) > 0): ?>
+				<?php $cnt = mysql_num_rows($result); ?>
+				<?php if($cnt > 0): ?>
+					<p>There are <?=$cnt?> CVs</p>
 					<table border="1" width="100%">
 						<tr>
-							<th>Name</th>
-							<th>Manage</th>
+							<th width="80%">Name</th>
+							<th width="30%">Manage</th>
 						</tr>
 						<?php while($row = mysql_fetch_array($result)): ?>
 							<tr>
-								<td><a href="show.php?cv=<?=$row['person_code']?>"><?=$row['person_name']?></a></td>
-							<td><a href="delete.php?cv=<?=$row['person_id']?>" onClick="return confirm('Are you sure you wish to delete ?');">[Delete]</a></td>
+								<td><a href="show.php?cv=<?=$row['person_code']?>"><?=$row['person_name']?>'s CV</a></td>
+								<td><a href="delete.php?cv=<?=$row['person_id']?>" onClick="return confirm('Are you sure you wish to delete ?');">[Delete]</a></td>
 							</tr>
 						<?php endwhile ?>
 
 					</table>
+					<p><a href="xml.php">Export to XML file</a></p>
 				<?php else: ?>
 					<p>Sorry, there are not CVs !</p>
 				<?php endif ?>
