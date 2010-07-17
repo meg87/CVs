@@ -49,7 +49,7 @@
 						<?php endwhile ?>
 
 					</table>
-					<p><a href="xml.php">Export to XML file</a></p>
+					<p><a href="xml.php">Export to XML file</a> | <a href="statistics.php">Statistics</a></p>
 				<?php else: ?>
 					<p>Sorry, there are not CVs !</p>
 				<?php endif ?>
