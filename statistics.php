@@ -30,8 +30,8 @@
 	</head>
 	<body>
 		<!-- Statistics -->
-		<h2>Statistics of Skills</h2>
 		<?php if($_SERVER['PHP_AUTH_USER'] == $admin_username && $_SERVER['PHP_AUTH_PW'] == $admin_password): ?>
+			<h2>Statistics of Skills</h2>
 			<?php $result = mysql_query("select DISTINCT skill_name from skills"); ?>
 			<?php if($result != null && $row = mysql_fetch_array($result)): ?>
 				<table border="1">
@@ -46,7 +46,11 @@
 						</tr>
 					<?php endwhile ?>
 				</table>
+			<?php else: ?>
+				<p>Sorry, there are not CVs yet !</p>
 			<?php endif ?>
+		<?php else: ?>
+			<p>Sorry, unauthorized login !</p>
 		<?php endif ?>
 	</body>
 </html>
