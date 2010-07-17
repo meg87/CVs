@@ -23,16 +23,23 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 	</head>
 	<body>
-		<!-- Statistics -->
+		<!-- search for skill -->
 		<?php if($_SERVER['PHP_AUTH_USER'] == $admin_username && $_SERVER['PHP_AUTH_PW'] == $admin_password): ?>
-			<h2>Results</h2>
-			<?php $result = mysql_query("select person_id, person_name, person_code from persons, skills where skill_owner = person_id and skill_name like '$value'"); ?>
+			<h2>Results of search for "<?=$value?>" skill</h2>
+			<?php $result = mysql_query("select person_id, person_name, person_code, skill_level from persons, skills where skill_owner = person_id and skill_name = '$value'"); ?>
 			<?php if($result != null && $row = mysql_fetch_array($result)): ?>
-				<ul>
+				<table border="1">
+					<tr>
+						<th>Person</th>
+						<th>Skill level</th>
+					</tr>
 					<?php while($row = mysql_fetch_array($result)): ?>
-						<li><a href="show.php?cv=<?=$row['person_code']?>" title="View CV"><?php if($row['person_name']): ?><?=$row['person_name']?><?php else: ?>Anonymous<?php endif ?></a></li>
+						<tr>
+							<td><a href="show.php?cv=<?=$row['person_code']?>" title="View CV"><?php if($row['person_name']): ?><?=$row['person_name']?><?php else: ?>Anonymous<?php endif ?></a></td>
+							<td><?=$row['skill_level']?></td>
+						</tr>
 					<?php endwhile ?>
-				</ul>
+				</table>
 			<?php else: ?>
 				<p>Sorry, there are not CVs match your search !</p>
 			<?php endif ?>
