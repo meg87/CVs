@@ -43,7 +43,7 @@
 						</tr>
 						<?php while($row = mysql_fetch_array($result)): ?>
 							<tr>
-								<td><a href="show.php?cv=<?=$row['person_code']?>"><?=$row['person_name']?>'s CV</a></td>
+								<td><a href="show.php?cv=<?=$row['person_code']?>"><?php if($row['person_name']): ?><?=$row['person_name']?><?php else: ?>Anonymous<?php endif ?></a></td>
 								<td><a href="delete.php?cv=<?=$row['person_id']?>" onClick="return confirm('Are you sure you wish to delete ?');">[Delete]</a></td>
 							</tr>
 						<?php endwhile ?>

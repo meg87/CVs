@@ -26,8 +26,10 @@
 		<!-- search for skill -->
 		<?php if($_SERVER['PHP_AUTH_USER'] == $admin_username && $_SERVER['PHP_AUTH_PW'] == $admin_password): ?>
 			<h2>Results of search for "<?=$value?>" skill</h2>
-			<?php $result = mysql_query("select person_id, person_name, person_code, skill_level from persons, skills where skill_owner = person_id and skill_name = '$value'"); ?>
-			<?php if($result != null && $row = mysql_fetch_array($result)): ?>
+			<?php $result = mysql_query("select person_id, person_name, person_code, skill_level from persons, skills where skill_owner = person_id and skill_name = '$value' order by skill_level DESC"); ?>
+			<?php $cnt = mysql_num_rows($result); ?>
+			<?php if($result != null && $cnt > 0): ?>
+				<p>There are <?=$cnt?> results</p>
 				<table border="1">
 					<tr>
 						<th>Person</th>

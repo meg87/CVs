@@ -33,7 +33,7 @@
 		<?php if($_SERVER['PHP_AUTH_USER'] == $admin_username && $_SERVER['PHP_AUTH_PW'] == $admin_password): ?>
 			<h2>Statistics of Skills</h2>
 			<?php $result = mysql_query("select DISTINCT skill_name from skills"); ?>
-			<?php if($result != null && $row = mysql_fetch_array($result)): ?>
+			<?php if($result != null && mysql_num_rows($result) > 0): ?>
 				<table border="1">
 					<tr>
 						<td>Skill</td>
